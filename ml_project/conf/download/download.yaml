@@ -1,0 +1,4 @@
+use_download: True
+s3_bucket: ml-project-bucket
+s3_path: heart_cleveland_upload.csv
+local_output_path: "data/raw/"

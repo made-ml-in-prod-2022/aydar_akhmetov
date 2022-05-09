@@ -1,0 +1,5 @@
+raw_data_path: "data/raw/heart_cleveland_upload.csv"
+train_data_path: "data/interim/train.csv"
+test_data_path: "data/interim/test.csv"
+output_model_path: "models/artefacts/model.pkl"
+metric_path: "models/artefacts/metrics.json"

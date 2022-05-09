@@ -1,0 +1,9 @@
+_target_: catboost.CatboostClassifier
+random_seed: ${general.random_state}
+n_estimators: 100
+depth: 2
+learning_rate: 0.02
+iterations: 100
+verbose: False
+l2_leaf_reg: 2
+cat_features: ${features.categorical_features}

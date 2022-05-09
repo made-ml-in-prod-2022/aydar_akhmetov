@@ -1,0 +1,4 @@
+test_size: 0.2
+random_state: ${general.random_state}
+shuffle: True
+save_interim: True

@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "prod_ml_hw"
+version = "0.1.0"
+description = ""
+authors = ["akhmetovai <akhmet.btc@yandex.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.22.3"
+pandas = "^1.4.2"
+jupyter = "^1.0.0"
+ipykernel = "^6.13.0"
+scikit-learn = "^1.0.2"
+matplotlib = "^3.5.1"
+seaborn = "^0.11.2"
+catboost = "^1.0.5"
+setuptools = "^62.1.0"
+dvc = "^2.10.2"
+click = "^8.1.3"
+boto3 = "^1.22.7"
+marshmallow = "^3.15.0"
+mlflow = "^1.25.1"
+hydra-core = "^1.1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
