@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from boto3.session import Session
 from sklearn.model_selection import train_test_split
-from hydra.utils import get_original_cwd, to_absolute_path
 
 
 def download_data_from_s3(
