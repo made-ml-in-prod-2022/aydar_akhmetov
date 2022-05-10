@@ -34,6 +34,9 @@ python train_pipeline.py
 
 or if you want change some paramater via command line:
 python train_pipeline.py general.random_state=43
+
+if you want just load model and make prediction
+python predict.py
 ~~~
 
 Run mlflow server:
