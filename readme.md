@@ -17,8 +17,14 @@ This is an example of ml project, including the following features:
 
 Installation:
 ~~~
-poetry init
-poetry add ml_project-0.1.0.tar.gz
+If using built package:
+tar -xvf ml_project-0.1.0.tar.gz
+cd ml_project-0.1.0
+pyenv local 3.8.10
+poetry install
+
+Else:
+poetry install
 ~~~
 
 Usage:
