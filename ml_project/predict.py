@@ -28,9 +28,11 @@ def predict(cfg: DictConfig) -> Tuple[str, dict]:
     )
     test_data = test_data.drop(cfg.features.target_col, axis=1)
     prediction = model.predict(test_data)
-    pd.Series.to_csv(to_absolute_path(cfg.paths.predict_data_path))
-    
-    return
+    prediction = pd.Series(prediction)
+    prediction.to_csv(
+        to_absolute_path(cfg.paths.predict_data_path),
+        index=None
+    )
 
 
 if __name__ == "__main__":
