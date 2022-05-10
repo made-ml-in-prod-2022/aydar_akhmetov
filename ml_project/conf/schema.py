@@ -34,6 +34,7 @@ class PathConfig:
     raw_data_path: str = "data/raw/heart_cleveland_upload.csv"
     train_data_path: str = "data/interim/train.csv"
     test_data_path: str = "data/interim/test.csv"
+    predict_data_path: str = "data/predictions/predict.csv"
     output_model_path: str = "models/artifacts/model.pkl"
     output_metric_path: str = "models/artifacts/metrics.json"
 
