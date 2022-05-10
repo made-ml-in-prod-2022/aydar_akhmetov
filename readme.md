@@ -45,7 +45,7 @@ Project Organization
 ------------
 
 ├── dist                <- Package successufully built to this directory
-├── .dvc                <- If you want data tracking
+├── .dvc                <- If you want data tracking for reproducibility
 ├── .git                <- You see this text because of this guy
 ├── README.md           <- The top-level README for developers using this project.
 ├── ml_project          <- Main code there
