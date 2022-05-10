@@ -1,9 +1,11 @@
 /ml_project/data/raw/*.csv
 /ml_project/data/interim/*.csv
+/ml_project/data/predictions/*.csv
 /ml_project/outputs/*
+/ml_project/models/artifacts/*
 /notebooks/.ipynb_checkpoints
 /notebooks/catboost_info
 /notes/*
 **/__pycache__
-.dvc/*
-*.dvc
+/ml_project/mlruns/*
+*.sqlite

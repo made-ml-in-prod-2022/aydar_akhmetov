@@ -1,4 +1,3 @@
-import os
 from typing import Tuple, NoReturn
 
 import pandas as pd
@@ -13,7 +12,6 @@ def download_data_from_s3(
 ) -> NoReturn:
     session = Session()
     s3 = session.client("s3", endpoint_url='https://storage.yandexcloud.net')
-    print(s3_bucket, s3_path, local_output_path)
     s3.download_file(s3_bucket, s3_path, local_output_path)
 
 def read_data(

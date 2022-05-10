@@ -30,6 +30,7 @@ from models.utils import (
     evaluate_model,
     create_inference_pipeline
 )
+import conf.schema
 
 
 logger = logging.getLogger(__name__)
@@ -103,17 +104,19 @@ def run_train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
 
     logger.info(f"metrics is {metrics}")
 
-    path_to_model = serialize_model(
+    model_path = serialize_model(
         inference_pipeline,
         to_absolute_path(cfg.paths.output_model_path)
     )
 
-    return path_to_model, metrics
+    return model, model_path, metrics
+
+
+conf.schema.register_configs()
 
 
 @hydra.main(config_path='conf', config_name='config')
 def train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
-    #print(OmegaConf.to_yaml(cfg))
 
     logger.info(f"running main pipeline")
     logger.info(f"using mlflow: {cfg.mlflow.use_mlflow}")
@@ -122,10 +125,11 @@ def train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
         mlflow.set_tracking_uri(cfg.mlflow.mlflow_uri)
         mlflow.set_experiment(cfg.mlflow.mlflow_experiment)
         with mlflow.start_run():
-            mlflow.log_artifact(OmegaConf.to_yaml(cfg))
-            model_path, metrics = run_train_pipeline(cfg)
+            mlflow.log_params(cfg)
+            model, model_path, metrics = run_train_pipeline(cfg)
             mlflow.log_metrics(metrics)
-            mlflow.log_artifact(model_path)
+            mlflow.log_artifact(os.path.dirname(model_path))
+            mlflow.sklearn.log_model(sk_model=model, artifact_path="model")
     else:
         return run_train_pipeline(cfg)
 

@@ -1,5 +1,5 @@
 [core]
     remote = storage
 ['remote "storage"']
-    url = s3://ml-project-bucket
+    url = s3://ml-project-bucket/dvc-store
     endpointurl = https://storage.yandexcloud.net
