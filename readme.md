@@ -55,9 +55,9 @@ Project Organization
 ├── dist                <- Package successufully built to this directory
 ├── .dvc                <- If you want data tracking for reproducibility
 ├── .git                <- You see this text because of this guy
-├── README.md           <- The top-level README for developers using this project.
+├── README.md           <- The top-level README
 ├── ml_project          <- Main code there
-│   ├── conf            <- Pretty config files
+│   ├── conf            <- Pretty config files with dataclass schema
 │   │   ├── cross_val
 │   │   ├── download
 │   │   ├── features
@@ -66,15 +66,19 @@ Project Organization
 │   │   ├── model
 │   │   ├── paths
 │   │   └── splitting
-│   ├── data            <- Data for data science magic
+|   |
+│   ├── data            <- Data for data science magic and utils
 │   │   ├── interim
 │   │   ├── predictions
 │   │   └── raw
+|   |
 │   ├── features        <- Feature utils
 │   ├── mlruns          <- Mlflow artifacts, you need this for reproducibility
 │   ├── models          <- Model utils
 │   │   └──artifacts    <- Saving model artifacts, why not
+|   |
 │   └── outputs         <- Hydra artifacts, you need this for reproducibility
+|
 ├── notebooks           <- Very beatiful EDA with seaborn there
 ├── notes               <- This is my markdown notes for every feature in my project
 └── tests               <- Testing end2end and modules 
