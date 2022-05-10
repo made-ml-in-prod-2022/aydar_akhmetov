@@ -35,7 +35,7 @@ class PathConfig:
     train_data_path: str = "data/interim/train.csv"
     test_data_path: str = "data/interim/test.csv"
     output_model_path: str = "models/artifacts/model.pkl"
-    metric_path: str = "models/artifacts/metrics.json"
+    output_metric_path: str = "models/artifacts/metrics.json"
 
 
 @dataclass

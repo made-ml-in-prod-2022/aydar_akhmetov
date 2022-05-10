@@ -9,3 +9,6 @@
 **/__pycache__
 /ml_project/mlruns/*
 *.sqlite
+/tests/*.csv
+.pytest_cache
+/dist/*

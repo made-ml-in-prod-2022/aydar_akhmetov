@@ -99,7 +99,7 @@ def run_train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
     predicts = predict_model(inference_pipeline, test_data)
     metrics = evaluate_model(predicts, test_target)
 
-    with open(to_absolute_path(cfg.paths.metric_path), "w") as metric_file:
+    with open(to_absolute_path(cfg.paths.output_metric_path), "w") as metric_file:
         json.dump(metrics, metric_file)
 
     logger.info(f"metrics is {metrics}")
