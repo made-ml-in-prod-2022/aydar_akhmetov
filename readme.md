@@ -17,13 +17,15 @@ This is an example of ml project, including the following features:
 
 Installation:
 ~~~
-in process
+poetry init
+poetry add ml_project-0.1.0.tar.gz
 ~~~
 
 Usage:
 ~~~
 cd ml_project/
 python train_pipeline.py
+
 or if you want change some paramater via command line:
 python train_pipeline.py general.random_state=43
 ~~~
@@ -43,7 +45,7 @@ pytest tests/
 
 Project Organization
 ------------
-
+~~~
 ├── dist                <- Package successufully built to this directory
 ├── .dvc                <- If you want data tracking for reproducibility
 ├── .git                <- You see this text because of this guy
@@ -73,5 +75,5 @@ Project Organization
     ├── artifacts
     ├── data_utils
     └── model_utils
-
+~~~
 --------
