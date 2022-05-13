@@ -3,7 +3,6 @@ from typing import Tuple
 
 import pandas as pd
 import hydra
-from hydra.utils import instantiate
 from hydra.utils import to_absolute_path
 from omegaconf import DictConfig
 import pickle
@@ -17,7 +16,7 @@ conf.schema.register_configs()
 
 @hydra.main(config_path='conf', config_name='config')
 def predict(cfg: DictConfig) -> Tuple[str, dict]:
-    
+
     with open(to_absolute_path(cfg.paths.output_model_path), "rb") as f:
         model = pickle.load(f)
 

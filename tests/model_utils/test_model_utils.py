@@ -6,7 +6,6 @@ from ml_project.models.utils import train_model
 from ml_project.features.utils import extract_target
 
 
-
 def test_train_model(
     dataset_path: str,
     categorical_features: str,

@@ -1,8 +1,5 @@
 import os
-import sys
-from typing import List
 
-from py._path.local import LocalPath
 from hydra import initialize, compose
 
 from ml_project.train_pipeline import run_train_pipeline
@@ -28,7 +25,7 @@ def test_train_e2e(
         cfg.paths.output_model_path = os.path.join(artifacts_path, 'model.pkl')
         cfg.paths.output_metric_path = os.path.join(artifacts_path, 'metrics.json')
 
-        #from pdb import set_trace; set_trace()
+        # from pdb import set_trace; set_trace()
 
         _, model_path, metrics = run_train_pipeline(cfg)
         assert metrics["roc_auc"] > 0.5

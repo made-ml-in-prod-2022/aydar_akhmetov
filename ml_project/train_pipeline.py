@@ -1,5 +1,5 @@
 
-from typing import Any, Optional, NoReturn, Tuple
+from typing import Tuple
 import json
 import logging
 import os
@@ -7,12 +7,8 @@ import sys
 from pathlib import Path
 
 import hydra
-from hydra.core.config_store import ConfigStore
-from hydra.utils import instantiate
-from hydra.utils import get_original_cwd, to_absolute_path
-from omegaconf import DictConfig, OmegaConf
-import pandas as pd
-import numpy as np
+from hydra.utils import to_absolute_path
+from omegaconf import DictConfig
 import mlflow
 
 from data.utils import (
@@ -41,7 +37,7 @@ logger.addHandler(handler)
 
 def run_train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
 
-    logger.info(f"running train pipeline")
+    logger.info("running train pipeline")
     logger.info(f"using data downloading: {cfg.download.use_download}")
 
     if cfg.download.use_download:
@@ -71,7 +67,7 @@ def run_train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
     logger.info(f"using saving interim data: {cfg.splitting.save_interim}")
 
     if cfg.splitting.save_interim:
-        logger.info(f"start saving interim data")
+        logger.info("start saving interim data")
         train_data.to_csv(to_absolute_path(cfg.paths.train_data_path), index=None)
         test_data.to_csv(to_absolute_path(cfg.paths.test_data_path), index=None)
 
@@ -118,7 +114,7 @@ conf.schema.register_configs()
 @hydra.main(config_path='conf', config_name='config')
 def train_pipeline(cfg: DictConfig) -> Tuple[str, dict]:
 
-    logger.info(f"running main pipeline")
+    logger.info("running main pipeline")
     logger.info(f"using mlflow: {cfg.mlflow.use_mlflow}")
 
     if cfg.mlflow.use_mlflow:

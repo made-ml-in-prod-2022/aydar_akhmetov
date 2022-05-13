@@ -14,6 +14,7 @@ def download_data_from_s3(
     s3 = session.client("s3", endpoint_url='https://storage.yandexcloud.net')
     s3.download_file(s3_bucket, s3_path, local_output_path)
 
+
 def read_data(
     path: str,
     categorical_features,
@@ -21,10 +22,10 @@ def read_data(
 ) -> pd.DataFrame:
 
     data = pd.read_csv(path)
-    
+
     for column in categorical_features:
         data[column] = data[column].astype('category')
-    
+
     for column in numerical_features:
         data[column] = data[column].astype(np.float32)
 
