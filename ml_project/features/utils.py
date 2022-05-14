@@ -1,10 +1,13 @@
 from typing import List
+
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+from features.custom_transform import RoundTransformer
 
 
 def process_categorical_features(categorical_df: pd.DataFrame) -> pd.DataFrame:
@@ -14,19 +17,16 @@ def process_categorical_features(categorical_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_categorical_pipeline(use_ohe_for_categorical: bool) -> Pipeline:
+
+    categorical_pipeline = Pipeline(
+        [
+            ("impute", SimpleImputer(missing_values=np.nan, strategy="most_frequent")),
+        ]
+    )
+
     if use_ohe_for_categorical:
-        categorical_pipeline = Pipeline(
-            [
-                ("impute", SimpleImputer(missing_values=np.nan, strategy="most_frequent")),
-                ("ohe", OneHotEncoder()),
-            ]
-        )
-    else:
-        categorical_pipeline = Pipeline(
-            [
-                ("impute", SimpleImputer(missing_values=np.nan, strategy="most_frequent")),
-            ]
-        )
+        categorical_pipeline.steps.append(["ohe", OneHotEncoder()])
+
     return categorical_pipeline
 
 
@@ -37,7 +37,11 @@ def process_numerical_features(numerical_df: pd.DataFrame) -> pd.DataFrame:
 
 def build_numerical_pipeline() -> Pipeline:
     num_pipeline = Pipeline(
-        [("impute", SimpleImputer(missing_values=np.nan, strategy="mean")), ]
+        [
+            ("impute", SimpleImputer(missing_values=np.nan, strategy="mean")),
+            ("scaler", StandardScaler()),
+            ("round_numerical", RoundTransformer(significant=3))
+        ]
     )
     return num_pipeline
 
